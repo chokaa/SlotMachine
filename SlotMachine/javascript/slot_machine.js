@@ -162,14 +162,13 @@ function Slot(){
 			zbir_horizontale="";
 		}
 
-		var index = Math.ceil(broj_redova/2);
 			
-		if(zbir_prve_dijagonale === zbir_prve_dijagonale.substring(0,vockice[index][index].ime.length).repeat(broj_redova)){
-			let vrednost_dijagonale = ikonice.filter(x=>x.ime===zbir_prve_dijagonale.substring(0,vockice[index][index].ime.length))[0].vrednost;
+		if(zbir_prve_dijagonale === zbir_prve_dijagonale.substring(0,vockice[0][0].ime.length).repeat(broj_redova)){
+			let vrednost_dijagonale = ikonice.filter(x=>x.ime===zbir_prve_dijagonale.substring(0,vockice[0][0].ime.length))[0].vrednost;
 			dobitak = dobitak + (vrednost_dijagonale*this.bet);
 		}
-		if(zbir_druge_dijagonale === zbir_druge_dijagonale.substring(0,vockice[index][index].ime.length).repeat(broj_redova)){
-			let vrednost_dijagonale = ikonice.filter(x=>x.ime===zbir_druge_dijagonale.substring(0,vockice[index][index].ime.length))[0].vrednost;
+		if(zbir_druge_dijagonale === zbir_druge_dijagonale.substring(0,vockice[0][0].ime.length).repeat(broj_redova)){
+			let vrednost_dijagonale = ikonice.filter(x=>x.ime===zbir_druge_dijagonale.substring(0,vockice[0][0].ime.length))[0].vrednost;
 			dobitak = dobitak + (vrednost_dijagonale*this.bet);
 		}
 			
