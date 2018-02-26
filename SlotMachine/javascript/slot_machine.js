@@ -11,7 +11,7 @@ var slotic;
 
 var init = function(){
 
-for(let i=4;i<8;i++){
+for(let i=2;i<10;i++){
 	var vockica = { slika : document.getElementById('ikonica'+i.toString()), vrednost : i, ime : document.getElementById('ikonica'+i.toString()).id }
 	ikonice.push(vockica);
 }
