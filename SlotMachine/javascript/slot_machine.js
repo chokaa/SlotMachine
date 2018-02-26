@@ -11,7 +11,7 @@ var slotic;
 
 var init = function(){
 
-for(let i=2;i<10;i++){
+for(let i=4;i<8;i++){
 	var vockica = { slika : document.getElementById('ikonica'+i.toString()), vrednost : i, ime : document.getElementById('ikonica'+i.toString()).id }
 	ikonice.push(vockica);
 }
@@ -60,7 +60,6 @@ c.addEventListener('click', function(event) {
 			slotic.update(element);
     });
 
-    	
 });
 
 }
@@ -141,17 +140,19 @@ function Slot(){
 	}
 	this.izracunajDobitak = function(){
 		var dobitak = 0;
-		let zbir_dijagonale = "";
+		let zbir_prve_dijagonale = "";
+		let zbir_druge_dijagonale = "";
 		let zbir_vertikale = "";
 		let zbir_horizontale = "";
 		for(let i=0;i<broj_redova;i++){
 			for(let j=0;j<broj_redova;j++){
 				zbir_vertikale+=vockice[i][j].ime;
 				zbir_horizontale+=vockice[j][i].ime;
-				/*
-				if(i==j)
-					zbir_dijagonale+=vockice[i][j].ime;
-				*/
+				if(i==j){
+					zbir_prve_dijagonale+=vockice[i][j].ime;
+				}
+				if(i+j==(broj_redova-1))
+					zbir_druge_dijagonale+=vockice[i][j].ime;
 			}
 			if(zbir_vertikale === zbir_vertikale.substring(0,vockice[i][i].ime.length).repeat(broj_redova))
 				dobitak = dobitak + (vockice[i][broj_redova-1].vrednost_vockice * this.bet);
@@ -159,29 +160,21 @@ function Slot(){
 			if(zbir_horizontale === zbir_horizontale.substring(0,vockice[i][i].ime.length).repeat(broj_redova))
 				dobitak = dobitak + (vockice[broj_redova-1][i].vrednost_vockice * this.bet);
 			zbir_horizontale="";
-			/*
-			if(zbir_dijagonale === zbir_dijagonale.substring(0,vockice[i][i].ime.length).repeat(broj_redova)){
-				let vrednost_dijagonale = ikonice.filter(x=>x.ime===zbir_dijagonale.substring(0,vockice[i][i].ime.length))[0].vrednost;
-				dobitak = dobitak + (vrednost_dijagonale*broj_redova*this.bet);
-			}
-			*/
 		}
-		/*
-		zbir_dijagonale="";
-		for(let m=broj_redova-1;m>=0;m--)
-			for(let k=broj_redova-1;k>=0;k--)
-				if(m==k)
-					zbir_dijagonale+=vockice[m][k].ime;
 
-		if(zbir_dijagonale === zbir_dijagonale.substring(0,vockice[m][m].ime.length).repeat(broj_redova)){
-			let vrednost_dijagonale = ikonice.filter(x=>x.ime===zbir_dijagonale.substring(0,vockice[m][m].ime.length))[0].vrednost;
-			dobitak = dobitak + (vrednost_dijagonale*broj_redova*this.bet);
+		var index = Math.ceil(broj_redova/2);
+			
+		if(zbir_prve_dijagonale === zbir_prve_dijagonale.substring(0,vockice[index][index].ime.length).repeat(broj_redova)){
+			let vrednost_dijagonale = ikonice.filter(x=>x.ime===zbir_prve_dijagonale.substring(0,vockice[index][index].ime.length))[0].vrednost;
+			dobitak = dobitak + (vrednost_dijagonale*this.bet);
 		}
-		*/
-		return dobitak;
-		
+		if(zbir_druge_dijagonale === zbir_druge_dijagonale.substring(0,vockice[index][index].ime.length).repeat(broj_redova)){
+			let vrednost_dijagonale = ikonice.filter(x=>x.ime===zbir_druge_dijagonale.substring(0,vockice[index][index].ime.length))[0].vrednost;
+			dobitak = dobitak + (vrednost_dijagonale*this.bet);
+		}
+			
+		return dobitak;	
 	}
-	this
 }
 
 function Vockica(i,j){
