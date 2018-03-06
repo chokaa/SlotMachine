@@ -1,0 +1,7 @@
+When u unzipped the folder, just open home.html in your browser. 
+I'm not positive its compatible with every browser, i worked in
+Google Chrome while developing game so i recommend it. Use case is
+simple, just play the game :) When u are finished and want to play more
+just refresh page. Just for the record, i could not find 12 normal icons
+with same background color, thats why some icons have white 
+background and some have gray, unfortunatelly.
